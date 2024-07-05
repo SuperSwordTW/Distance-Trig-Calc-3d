@@ -7,7 +7,7 @@ The way we can integrate the 2d method into 3d is by similar process. First, dra
 
 ## Efficiency
 
-The efficiency of this method is fairly good; it's tested to be faster than the entity display method and 4th-iteration Newton rasphon by quite a bit.
+The efficiency of this method is fairly good; it's tested to be faster than other known methods by quite a bit. For example, the entity display method and 4th-iteration Newton rasphon.
 Benchmarking on my computer gives the result that Trig method averages around 22 μs, while entity display averages around 39μs, and Newton rasphon averages around 36μs
 
 ## Implementation
