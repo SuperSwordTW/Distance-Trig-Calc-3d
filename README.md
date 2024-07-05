@@ -8,6 +8,7 @@ The way we can integrate the 2d method into 3d is by similar process. First, dra
 ## Efficiency
 
 The efficiency of this method is fairly good; it's tested to be faster than the entity display method and 4th-iteration Newton rasphon by quite a bit.
+Benchmarking on my computer gives the result that Trig method averages around 22 μs, while entity display averages around 39μs, and Newton rasphon averages around 36μs
 
 ## Implementation
 Note that this pack is made in 1.21, so the naming convention of the folder `functions` has become `function`. If you want to use this in 1.20, you can change it back.
@@ -28,5 +29,5 @@ scoreboard players get .out distance
 This will give you the result distance with 3-decimal place accuracy.
 
 ## Accuracy
-$1/sin$ values are saved in a few digits. Therefore, if the inputs are substantial, the results would be inaccurate, but mostly in the third decimal place.
+$1/sin$ values are saved in a few digits. Therefore, if the inputs are substantial, the results would be a little bit inaccurate, but mostly in the third decimal place.
 Overall, some minor errors shouldn't affect its usage.
