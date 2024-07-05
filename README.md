@@ -1,13 +1,7 @@
-Fast 2D Distance Calculating with Trigonometry
+Fast Distance Calculating with Trigonometry
 ====================
 ## Info
-When calculating a distance between two points, we usually use the Pythagorean theorem. $\sqrt{a^2+b^2}=c$.
-But squaring in Minecraft can cause some problems, especially when we are scaling things up
-Because it can easily run out of scoreboard space, which is an integer (2147483647).
-Instead of relying on the Pythagorean theorem, we can use Trigonometry to solve the problem.
-
-Draw a right triangle with two points. The two sides are labeled $a,b$ and the hypotenuse is $c$. Then $tan^-1({a \over b})$ represents $θ$. Since $sin(θ)$= $a \over c$.
-So, $a \over {sin(tan^-1({a \over b}))}$ would equal $c$.
+The way we can integrate the 2d method into 3d is by similar process. First, draw a triangle.
 
 Now that we have the formula, we need to calculate it in Minecraft.
 
