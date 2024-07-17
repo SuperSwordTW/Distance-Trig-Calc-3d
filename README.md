@@ -25,12 +25,14 @@ scoreboard players set .dy distance [value]
 scoreboard players set .dz distance [value]
 ```
 Set the changes in x,y,z on the scoreboard.
+`The input dx dy dz don't need to be scaled, just natural numbers would be fine.`
 ***dx***, ***dy*** and ***dz*** value must be ***Positive***
 ```
 function distance:start
 scoreboard players get .out distance
 ```
 This will give you the result distance with 3-decimal place accuracy.
+`This means if the output is 20.153 then the score on .out would be 20153`
 
 ## Accuracy
 $1/sin$ values are saved in a few digits. Therefore, if the inputs are substantial, the results would be slightly inaccurate, but mostly in the third decimal place.
