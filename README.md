@@ -7,8 +7,9 @@ The way we can integrate the 2D method into 3D is through a similar process. Fir
 
 ## Efficiency
 
-The efficiency of this method is fairly good; it's tested to be faster than other known methods by quite a bit—for example, the entity display method and 4th-iteration Newton rasphon.
-Benchmarking on my computer gives the result that Trig method averages around 22 μs, the entity display averages around 39μs, and Newton rasphon averages around 36μs
+The efficiency of this method is fairly good; it's tested to be faster than other known methods by quite a bit—for example, the entity display method.
+Meanwhile, the efficiency of this method is eqivilent to using a 6th-iteration Newton-Raphson.
+Benchmarking on my computer gives the result that Trig method averages around 61 μs, the entity display averages around 89μs, and Newton rasphon averages around 60μs
 
 Also, if you are intended to calculate 2D distance, you can use the 2D version of this pack, it performs even better! [Distance-Trig-Calc-2d](https://github.com/SuperSwordTW/Distance-Trig-Calc-2d)
 
