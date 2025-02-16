@@ -5,4 +5,4 @@ execute store result storage distance pos[2] double 1 run scoreboard players get
 data modify entity @s Pos set from storage distance pos
 
 execute at @s facing 0.0 0.0 0.0 run tp @s 0 0 0 0 ~
-execute store result storage input t int 1 run data get entity @s Rotation[1] 100
+execute store result storage input t int 1 run data get entity @s Rotation[1] 1000
