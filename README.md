@@ -46,6 +46,6 @@ function distance:math/sine with storage input
 Change the 100 at line 4 to your desired degree of accuracy. The amount of zeros indicates the decimal points. i.e. 100 is 2 decimal place accuracy, 1000 is 3 decimal place accuracy.
 
 ## Accuracy
-~~$1/sin$ values are saved in a few digits. Therefore, if the inputs are substantial, the results would be slightly inaccurate, but mostly in the third decimal place.
+~~values are saved in a few digits. Therefore, if the inputs are substantial, the results would be slightly inaccurate, but mostly in the third decimal place.
 Overall, some minor errors shouldn't affect its usage.~~
 After fixing some slight oversights in the original code. The method can now calculate the distance, as can your calculator. The digits saved in the storage are up to 15 digits, therefore, giving it a subtle accuracy.
