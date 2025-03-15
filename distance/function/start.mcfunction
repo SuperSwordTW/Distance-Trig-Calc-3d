@@ -1,7 +1,3 @@
-execute store result score #dx distance run random value 0..1000
-execute store result score #dy distance run random value 0..1000
-execute store result score #dz distance run random value 0..1000
-
 execute if score #dy distance < #dx distance run scoreboard players operation #dy distance >< #dx distance
 execute if score #dy distance < #dz distance run scoreboard players operation #dy distance >< #dz distance
 
