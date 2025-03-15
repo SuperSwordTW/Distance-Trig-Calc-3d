@@ -1,7 +1,7 @@
 Fast Distance Calculating with Trigonometry
 ====================
 ## Info
-The way we can integrate the 2D method into 3D is through a similar process. First, draw a triangle on the ground; this acts as our dx and dz. Now draw a height on the hypotenuse of the triangle. The newly drawn side and the hypotenuse should form another triangle. The hypotenuse of the new triangle should be our distance. In the picture below, $e$ would be the distance from point 1 to point 2. Therefore, we can say that $dy \over sin(θ)$ would be equivalent to $e$. So our only job is to find θ and sin(θ) efficiently. To find θ, we can make use of `facing` in execute. Let a marker positioned at (-dx,-dy,dz) and face the origin and teleport it. Then it's y_rotation or Rotation[1] in their nbt will become θ. Since the range of θ can only be 0°~90°, we can create a sine table for it. Meanwhile, because multiplication is much faster than division, we turn the formula $dy \over sin(θ)$ into $dy * {1 \over sin(θ)}$, creating a table of reciprocal of sine instead.
+The way we can integrate the 2D method into 3D is through a similar process. First, draw a triangle on the ground; this acts as our dx and dz. Now draw a height on the hypotenuse of the triangle. The newly drawn side and the hypotenuse should form another triangle. The hypotenuse of the new triangle should be our distance. In the picture below, $e$ would be the distance from point 1 to point 2. Therefore, we can say that $dy \over sin(θ)$ would be equivalent to $e$. So our only job is to find θ and sin(θ) efficiently. To find θ, we can make use of `facing` in execute. Let a marker positioned at t(-dx,-dy,dz), t is a infinitesimal number, and face the origin and rotate it. Then it's y_rotation or Rotation[1] in their nbt will become θ. Since the range of θ can only be 0°~90°, we can create a sine table for it. Meanwhile, because multiplication is much faster than division, we turn the formula $dy \over sin(θ)$ into $dy * {1 \over sin(θ)}$, creating a table of reciprocal of sine instead.
 
 ![triangle](https://github.com/SuperSwordTW/Distance-Trig-Calc-3d/assets/63050705/78ce86d3-4ec3-463d-af5f-c255d9a01402)
 
@@ -9,7 +9,7 @@ The way we can integrate the 2D method into 3D is through a similar process. Fir
 
 The efficiency of this method is fairly good; it's tested to be faster than other known methods by quite a bit—for example, the entity display method.
 Meanwhile, the efficiency of this method is equivalent to using a 6th-iteration Newton-Raphson, yet this method yields greater accuracy.
-Benchmarking on my computer gives the relative result that Trig method averages around 61 μs, the entity display averages around 89μs, and Newton rasphon averages around 60μs
+Benchmarking on my computer gives the relative result that Trig method averages around 61 μs, the entity display averages around 65μs, and Newton rasphon averages around 60μs
 
 ## Implementation
 Note that this pack is made in 1.21, so the naming convention of the folder `functions` has become `function`. If you want to use this in 1.20, you can change it back.
