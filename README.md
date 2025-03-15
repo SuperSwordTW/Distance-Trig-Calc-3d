@@ -43,7 +43,7 @@ execute store result storage input y int 100 run scoreboard players get #dy dist
 function distance:math/sine with storage input
 ```
 
-Change the 100 at line 4 to your desired degree of accuracy. The amount of zeros indicates the decimal points. i.e. 100 is 2 decimal place accuracy, 1000 is 3 decimal place accuracy.
+Change the 10 at line 6 to your desired degree of accuracy. The amount of zeros indicates the decimal points. i.e. 100 is 2 decimal place accuracy, 1000 is 3 decimal place accuracy.
 
 ## Accuracy
 ~~values are saved in a few digits. Therefore, if the inputs are substantial, the results would be slightly inaccurate, but mostly in the third decimal place.
