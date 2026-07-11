@@ -59,7 +59,7 @@ Below is the benchmark result:
 |`Item Display`|0.00982ms|
 |`Newton-Raphson`| 0.01060ms |
 | **Trig**  |  0.00860ms   |
-- This method is 1.14x faster than the Item Display method. 1.23x faster than 12th-iteration Newton-Raphson.
+- This method is 1.14x faster than the Item Display method; 1.23x faster than 12th-iteration Newton-Raphson.
 
 ## Accuracy
 With the optimized and refined angle calculation, the deviation in the previous version caused by the marker's rotation is now reduced, making the method even more precise.
