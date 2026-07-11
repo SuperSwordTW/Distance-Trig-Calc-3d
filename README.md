@@ -43,23 +43,24 @@ A scale of $10^n$ will result in n decimal places.
 
 
 ## Info
-The way we can integrate the 2D method into 3D is through a similar process. First, draw a triangle on the ground; this acts as our dx and dz. Now draw a height on the hypotenuse of the triangle. The newly drawn side and the hypotenuse should form another triangle. The hypotenuse of the new triangle should be our distance. In the picture below, $e$ would be the distance from point 1 to point 2. Therefore, we can say that $dy \over sin(θ)$ would be equivalent to $e$. So our only job is to find θ and sin(θ) efficiently. To find θ, we can make use of `facing` in execute. Let a marker positioned at t(dx,dy,dz), t is an infinitesimal number, and face the origin and rotate it. Then it's y_rotation or Rotation[1] in their nbt will become θ. Since the range of θ can only be 0°~90°, we can create a sine table for it. Meanwhile, because multiplication is much faster than division, we turn the formula $dy \over sin(θ)$ into $dy * {1 \over sin(θ)}$, creating a table of the reciprocal of sine instead.
+This method uses a simple idea.
+First, draw a triangle on the ground; this acts as our dx and dz.
+Now draw a height on the hypotenuse of the triangle. The newly drawn side and the hypotenuse should form another triangle. The hypotenuse of the new triangle should be our distance.
+In the picture below, $e$ would be the distance from point 1 to point 2. Therefore, $dy \over sin(θ) = $e$. Our job is to find θ and sin(θ) efficiently.
+To find θ, we use `rotate` with macros. `$execute positioned 0.0 0.0 0.0 run rotate @s facing ~$(x) ~$(y) ~$(z)` running this with a marker would successfully retrieves the angle -θ to the marker's Rotation[1] nbt.
+Since the range of θ can only be -90°~0°, we can create a sine table for it (plugging arr[-x] would get the xth element from the back). Meanwhile, because multiplication is much faster than division, we turn the formula $dy \over sin(θ)$ into $dy * {1 \over sin(θ)}$, creating a table of the reciprocal of sine instead.
 
 ![triangle](https://github.com/SuperSwordTW/Distance-Trig-Calc-3d/assets/63050705/78ce86d3-4ec3-463d-af5f-c255d9a01402)
 
 ## Efficiency
 
-The efficiency of this method is fairly good; it's tested to be faster than other known methods by quite a bit—for example, the entity display method.
-Meanwhile, the efficiency of this method is equivalent to using a 6th-iteration Newton-Raphson, yet this method yields greater accuracy.
-Benchmarking on my computer gives the relative result that Trig method averages around 61 μs, the entity display averages around 65μs, and Newton rasphon averages around 60μs
-
-This method is faster than the item display method, the 6th-iteration Newton-Raphson.
+This method is faster than the item display method, the 12th-iteration Newton-Raphson.
 Below is the benchmark result:
 | Method    | Result |
 | -------- | ------- |
-| `trig`  |  0.00918ms   |
-|`item display`|0.01056ms|
-|`Newton-Raphson`|
+| `trig`  |  0.00860ms   |
+|`item display`|0.00982ms|
+|`Newton-Raphson`| 0.01060ms |
 
 ## Accuracy
 With the optimized and refined angle calculation, the deviation in the previous version caused by the marker's rotation is now reduced, making the method even more precise.
@@ -68,6 +69,6 @@ Calculating $sqrt(1^2 + 36991^2 + 21474^2)$
 | Method    | Result |
 | -------- | ------- |
 | Calculator  | 42772.266224    |
-| Before Optimization | 42772.6976     |
-| Item Display    | 42772.2656    |
-| After Optimization | 42772.2680 |
+| `Before Optimization` | 42772.6976     |
+| `Item Display`    | 42772.2656    |
+| `After Optimization` | 42772.2680 |
