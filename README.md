@@ -31,7 +31,7 @@ data get storage minecraft:fdistance out
 ```
 
 
-The result will be in 4 decimal places.
+- The result will be in 4 decimal places.
 
 If you want to change the number of decimal places, you can do it as follows.
 Inside, `start.mcfunction` or `start_storage.mcfunction`
