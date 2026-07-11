@@ -2,9 +2,6 @@ Fast Distance Calculating with Trigonometry
 ====================
 
 ## How to use
-Note that this pack is made in 1.21, so the naming convention of the folder `functions` has become `function`. If you want to use this in 1.20, you can change it back.
-
-The pack uses the UUID `26fb7c75-b19f-428a-b544-3f17c080b3cb`. So beware of conflicts if your other pack also uses that UUID.
 
 Calculates $\sqrt{dx^2 + dy^2 + dz^2}$
 
@@ -32,6 +29,7 @@ data get storage minecraft:fdistance out
 
 
 - The result will be in 4 decimal places.
+- The pack uses the UUID `26fb7c75-b19f-428a-b544-3f17c080b3cb`. So beware of conflicts if your other pack also uses that UUID.
 
 If you want to change the number of decimal places, you can do it as follows.
 Inside, `start.mcfunction` or `start_storage.mcfunction`
