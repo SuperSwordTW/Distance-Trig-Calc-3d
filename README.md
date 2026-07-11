@@ -6,7 +6,7 @@ Note that this pack is made in 1.21, so the naming convention of the folder `fun
 
 The pack uses the UUID `26fb7c75-b19f-428a-b544-3f17c080b3cb`. So beware of conflicts if your other pack also uses that UUID.
 
-Calculates $sqrt(dx^2 + dy^2 + dz^2)$
+Calculates $\sqrt{dx^2 + dy^2 + dz^2}$
 
 Install the datapack into the corresponding folder.
 1. Input is from scoreboard  
@@ -65,7 +65,7 @@ Below is the benchmark result:
 ## Accuracy
 With the optimized and refined angle calculation, the deviation in the previous version caused by the marker's rotation is now reduced, making the method even more precise.
 Below is an actual measurement:
-Calculating $sqrt(1^2 + 36991^2 + 21474^2)$
+Calculating $\sqrt{1^2 + 36991^2 + 21474^2}$
 | Method    | Result |
 | -------- | ------- |
 | Calculator  | 42772.266224    |
