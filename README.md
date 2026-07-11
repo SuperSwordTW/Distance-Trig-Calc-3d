@@ -1,4 +1,4 @@
-Fast Distance Calculating with Trigonometry
+Fast Distance Calculating using Trigonometry
 ====================
 
 ## How to use
