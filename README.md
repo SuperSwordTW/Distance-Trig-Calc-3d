@@ -68,7 +68,7 @@ Below is an actual measurement:
 Calculating $\sqrt{1^2 + 36991^2 + 21474^2}$
 | Method    | Result |
 | -------- | ------- |
-| Calculator  | 42772.266224    |
+| `Calculator`  | 42772.266224    |
 | `Before Optimization` | 42772.6976     |
 | `Item Display`    | 42772.2656    |
 | **After Optimization** | 42772.2680 |
