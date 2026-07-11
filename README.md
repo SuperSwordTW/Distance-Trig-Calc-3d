@@ -43,12 +43,12 @@ A scale of $10^n$ will result in n decimal places.
 
 
 ## Info
-This method uses a simple idea.
-First, draw a triangle on the ground; this acts as our dx and dz.
-Now draw a height on the hypotenuse of the triangle. The newly drawn side and the hypotenuse should form another triangle. The hypotenuse of the new triangle should be our distance.
-In the picture below, $e$ would be the distance from point 1 to point 2. Therefore, $dy \over sin(θ) = $e$. Our job is to find θ and sin(θ) efficiently.
-To find θ, we use `rotate` with macros. `$execute positioned 0.0 0.0 0.0 run rotate @s facing ~$(x) ~$(y) ~$(z)` running this with a marker would successfully retrieves the angle -θ to the marker's Rotation[1] nbt.
-Since the range of θ can only be -90°~0°, we can create a sine table for it (plugging arr[-x] would get the xth element from the back). Meanwhile, because multiplication is much faster than division, we turn the formula $dy \over sin(θ)$ into $dy * {1 \over sin(θ)}$, creating a table of the reciprocal of sine instead.
+This method uses a simple idea.\\
+First, draw a triangle on the ground; this acts as our dx and dz. \\
+Now draw a height on the hypotenuse of the triangle. The newly drawn side and the hypotenuse should form another triangle. The hypotenuse of the new triangle should be our distance.\\
+In the picture below, $e$ would be the distance from point 1 to point 2. Therefore, $dy \over sin(θ) = $e$. Our job is to find θ and sin(θ) efficiently.\\
+To find θ, we use `rotate` with macros. `$execute positioned 0.0 0.0 0.0 run rotate @s facing ~$(x) ~$(y) ~$(z)` running this with a marker would successfully retrieves the angle -θ to the marker's Rotation[1] nbt.\\
+Since the range of θ can only be -90°~0°, we can create a sine table for it (plugging arr[-x] would get the xth element from the back). Meanwhile, because multiplication is much faster than division, we turn the formula $dy \over sin(θ)$ into $dy * {1 \over sin(θ)}$, creating a table of the reciprocal of sine instead.\\
 
 ![triangle](https://github.com/SuperSwordTW/Distance-Trig-Calc-3d/assets/63050705/78ce86d3-4ec3-463d-af5f-c255d9a01402)
 
