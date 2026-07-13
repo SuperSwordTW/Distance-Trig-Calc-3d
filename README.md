@@ -36,7 +36,7 @@ Inside, `start.mcfunction` or `start_storage.mcfunction`
 ```
 data get storage fdistance y 10000
 ```
-Change the scale of y
+Change the scale of y  
 A scale of $10^n$ will result in n decimal places.
 
 
