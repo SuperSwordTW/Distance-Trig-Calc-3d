@@ -63,7 +63,7 @@ Below is the benchmark result:
 
 ## Accuracy
 With the optimized and refined angle calculation, the deviation in the previous version caused by the marker's rotation is now reduced, making the method even more precise.
-Below is an actual measurement:
+Below is an actual measurement:  
 Calculating $\sqrt{1^2 + 36991^2 + 21474^2}$
 | Method    | Result |
 | -------- | ------- |
