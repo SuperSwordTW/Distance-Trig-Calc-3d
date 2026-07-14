@@ -7,6 +7,6 @@ execute store result storage fdistance y double 1 store result storage input y d
 
 execute store result storage fdistance z double 1 run scoreboard players get #dz distance
 
-execute as 26fb7c75-b19f-428a-b544-3f17c080b3cb run function fdist:angle with storage fdistance
+execute as 26fb7c75-b19f-428a-b544-3f17c080b3cb positioned 0.0 0.0 0.0 run function fdist:angle with storage fdistance
 
 execute store result score #out distance run function fdist:sine with storage input
