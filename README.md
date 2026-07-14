@@ -1,51 +1,73 @@
-Fast Distance Calculating with Trigonometry
+Fast Distance Calculating using Trigonometry
 ====================
+
+## How to use
+
+Calculates $\sqrt{dx^2 + dy^2 + dz^2}$
+
+Install the datapack into the corresponding folder.
+1. Input is from scoreboard  
+***dx***, ***dy***, and ***dz*** must be **Positive**
+```
+scoreboard players set #dx distance 1
+scoreboard players set #dy distance 1
+scoreboard players set #dz distance 1
+
+function fdist:start
+scoreboard players get #out distance
+```
+2. Input is from storage  
+***x***, ***y***, and ***z*** must be **Positive**
+```
+data modify storage minecraft:fdistance x set value 13.12d
+data modify storage minecraft:fdistance y set value 13.12d
+data modify storage minecraft:fdistance z set value 13.12d
+
+function fdist:start_storage
+data get storage minecraft:fdistance out
+```
+
+
+- The result will be in 4 decimal places.
+- The pack uses the UUID `26fb7c75-b19f-428a-b544-3f17c080b3cb`. So beware of conflicts if your other pack also uses that UUID.
+
+If you want to change the number of decimal places, you can do it as follows.
+Inside, `start.mcfunction` or `start_storage.mcfunction`
+```
+data get storage fdistance y 10000
+```
+Change the scale of y  
+A scale of $10^n$ will result in n decimal places.
+
+
 ## Info
-The way we can integrate the 2D method into 3D is through a similar process. First, draw a triangle on the ground; this acts as our dx and dz. Now draw a height on the hypotenuse of the triangle. The newly drawn side and the hypotenuse should form another triangle. The hypotenuse of the new triangle should be our distance. In the picture below, $e$ would be the distance from point 1 to point 2. Therefore, we can say that $dy \over sin(θ)$ would be equivalent to $e$. So our only job is to find θ and sin(θ) efficiently. To find θ, we can make use of `facing` in execute. Let a marker positioned at t(dx,dy,dz), t is a infinitesimal number, and face the origin and rotate it. Then it's y_rotation or Rotation[1] in their nbt will become θ. Since the range of θ can only be 0°~90°, we can create a sine table for it. Meanwhile, because multiplication is much faster than division, we turn the formula $dy \over sin(θ)$ into $dy * {1 \over sin(θ)}$, creating a table of reciprocal of sine instead.
+This method uses a simple idea.  
+First, draw a triangle on the ground; this acts as our dx and dz.  
+Now draw a height on the hypotenuse of the triangle. The newly drawn side and the hypotenuse should form another triangle. The hypotenuse of the new triangle should be our distance.  
+In the picture below, $e$ would be the distance from point 1 to point 2. Therefore, $dy \over sin(θ)$ = $e$. Our job is to find θ and sin(θ) efficiently.  
+To find θ, we use `rotate` with macros. `$execute positioned 0.0 0.0 0.0 run rotate @s facing ~$(x) ~$(y) ~$(z)` running this with a marker would successfully retrieves the angle -θ to the marker's Rotation[1] nbt.  
+Since the range of θ can only be -90°~0°, we can create a sine table for it (plugging arr[-x] would get the xth element from the back). Meanwhile, because multiplication is much faster than division, we turn the formula $dy \over sin(θ)$ into $dy * {1 \over sin(θ)}$, creating a table of the reciprocal of sine instead.  
 
 ![triangle](https://github.com/SuperSwordTW/Distance-Trig-Calc-3d/assets/63050705/78ce86d3-4ec3-463d-af5f-c255d9a01402)
 
 ## Efficiency
 
-The efficiency of this method is fairly good; it's tested to be faster than other known methods by quite a bit—for example, the entity display method.
-Meanwhile, the efficiency of this method is equivalent to using a 6th-iteration Newton-Raphson, yet this method yields greater accuracy.
-Benchmarking on my computer gives the relative result that Trig method averages around 61 μs, the entity display averages around 65μs, and Newton rasphon averages around 60μs
-
-## Implementation
-Note that this pack is made in 1.21, so the naming convention of the folder `functions` has become `function`. If you want to use this in 1.20, you can change it back.
-
-The pack uses the UUID 0-0-0-0-1. So beware of conflicts if your other pack also uses that UUID.
-
-Install the datapack into the corresponding folder.
-`distance:load` function is required to place it in load, or you can manually run it once in the game.
-```
-scoreboard players set #dx distance [value]
-scoreboard players set #dy distance [value]
-scoreboard players set #dz distance [value]
-```
-Set the changes in x,y,z on the scoreboard.
-`The input dx dy dz don't need to be scaled, just natural numbers would be fine.`
-***dx***, ***dy*** and ***dz*** value must be ***Positive***
-```
-function distance:start
-scoreboard players get #out distance
-```
-This will give you the result distance with 2-decimal place accuracy.
-`This means if the output is 20.15 then the score on .out would be 2015`
-
-If you want to change the degree of accuracy, you can do it as follows.
-Inside, `start.mcfunction`
-```
-execute if score #dy distance < #dx distance run scoreboard players operation #dy distance >< #dx distance
-execute if score #dy distance < #dx distance run scoreboard players operation #dy distance >< #dz distance
-execute as 0-0-0-0-1 run function distance:tp
-execute store result storage input y int 100 run scoreboard players get #dy distance
-function distance:math/sine with storage input
-```
-
-Change the 10 at line 6 to your desired degree of accuracy. The amount of zeros indicates the decimal points. i.e. 100 is 2 decimal place accuracy, 1000 is 3 decimal place accuracy.
+This method is faster than the item display method, the 12th-iteration Newton-Raphson.
+Below is the benchmark result:
+| Method    | Result |
+| -------- | ------- |
+|`Item Display`|0.00982ms|
+|`Newton-Raphson`| 0.01060ms |
+| **Trig**  |  0.00860ms   |
+- This method is 1.14x faster than the Item Display method; 1.23x faster than 12th-iteration Newton-Raphson.
 
 ## Accuracy
-~~values are saved in a few digits. Therefore, if the inputs are substantial, the results would be slightly inaccurate, but mostly in the third decimal place.
-Overall, some minor errors shouldn't affect its usage.~~
-After fixing some slight oversights in the original code. The method can now calculate the distance, as can your calculator. The digits saved in the storage are up to 15 digits, therefore, giving it a subtle accuracy. If you wish to increase the accuracy even more, you can generate a table that saves more digits, as this wouldn't affect the efficiency.
+With the optimized and refined angle calculation, the deviation in the previous version caused by the marker's rotation is now reduced, making the method even more precise.
+Below is an actual measurement:  
+Calculating $\sqrt{1^2 + 36991^2 + 21474^2}$
+| Method    | Result |
+| -------- | ------- |
+| `Calculator`  | 42772.266224    |
+| `Before Optimization` | 42772.6976     |
+| `Item Display`    | 42772.2656    |
+| **After Optimization** | 42772.2680 |
